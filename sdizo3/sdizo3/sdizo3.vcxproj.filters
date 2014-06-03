@@ -25,6 +25,9 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Plecak2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Plecak.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,10 +36,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Plecak2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Plecak.cpp">
+    <ClCompile Include="sdizo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
