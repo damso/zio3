@@ -75,7 +75,7 @@ void wczytaj_z_pliku_plecak(){
 	cout << "Liczba przedmiotow: " << li_przedmiotow << endl;
 	cout << "-----------------------------" << endl;
 	for (int i = 2; i < wektor.size(); i++){
-		cout << "Wartosc: " << wektor[i] << " || Waga: " << wektor[i + 1] << endl;
+		cout << "Waga: " << wektor[i] << " || Wartosc: " << wektor[i + 1] << endl;
 		i++;
 	}
 
@@ -83,12 +83,12 @@ void wczytaj_z_pliku_plecak(){
 	Knapsackv2 plecak(pojemnosc, li_przedmiotow);
 	int licz = 0;
 	for (int i = 2; i < wektor.size(); i++){
-		plecak.dodaj_przedmiot(wektor[i], wektor[i + 1]);
+		plecak.dodaj_przedmiot(wektor[i+1], wektor[i]);
 		i++;
 	}
 
 	int rozwiazanie = plecak.algorytm();
-	cout << endl << "Wartosc : " << rozwiazanie << std::endl;
+	cout << endl << "Wartosc max: " << rozwiazanie << std::endl;
 
 }
 
