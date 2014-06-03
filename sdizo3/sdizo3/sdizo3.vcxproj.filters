@@ -31,12 +31,18 @@
     <ClInclude Include="Plecak.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TravelingSalesman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="sdizo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TravelingSalesman.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

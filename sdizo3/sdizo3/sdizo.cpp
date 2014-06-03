@@ -9,6 +9,7 @@
 #include <time.h>
 #include <fstream>
 #include <conio.h>
+#include "TravelingSalesman.h"
 using namespace std;
 
 void menu_glowne();
@@ -161,6 +162,41 @@ void menu_dynamic(){
 	}
 }
 
+TravelingSalesman *komiwojazer;
+void menuKomiwojazera(){
+	int wybor;
+	system("cls");
+	cout << "          MENU KOMIWOJAZERA" << endl;
+	cout << "-------------------------------" << endl;
+	cout << "1. Wczytaj z pliku" << endl;
+	cout << "2. Przeglad zupelny" << endl;
+	cout << "3. Agorytm zachlanny" << endl;
+	cout << "4. 2-opt" << endl;
+	cout << "-------------------------------" << endl;
+	cout << "9. Menu Glowne" << endl;
+	cout << "0. Wyjscie" << endl;
+	cout << "-------------------------------" << endl;
+
+	wybor = _getch();
+	switch (wybor){
+	case '1':
+		system("cls");
+		//wczytanie z pliku
+		//wywolanie konstruktora
+		menuKomiwojazera();
+	case '2':
+		system("cls");
+		menu_dynamic();
+	case '3':
+		system("cls");
+		menu_glowne();
+	case '0':
+		exit(0);
+	default:
+		menu_glowne();
+	}
+}
+
 void menu_glowne(){
 	int wybor;
 	system("cls");
@@ -168,7 +204,7 @@ void menu_glowne(){
 	cout << "-------------------------------" << endl;
 	cout << "1. Problem plecakowy - przeglad zupelny" << endl;
 	cout << "2. Problem plecakowy - programowanie dynamiczne" << endl;
-	cout << "3. Komiwojazer jakis tam" << endl;
+	cout << "3. Asymetryczny Problem Komiwojazera" << endl;
 	cout << "0. Zakoncz" << endl;
 	cout << "-------------------------------" << endl;
 
