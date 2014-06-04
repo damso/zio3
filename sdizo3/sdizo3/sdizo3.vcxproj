@@ -77,6 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="1.txt" />
+    <Text Include="2.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

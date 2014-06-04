@@ -162,6 +162,23 @@ void menu_dynamic(){
 	}
 }
 
+vector <int> wagiKrawedzi;
+void komiwojazerzPliku(){
+	vector<int> wektor;
+	int x;
+	fstream plik;
+	plik.open("2.txt", std::ios::in | std::ios::out);
+
+	if (plik.good() == true){
+		while (!plik.eof()){
+			plik >> x;
+			wektor.push_back(x);
+		}
+		plik.close();
+	}
+	wagiKrawedzi = wektor;
+}
+
 TravelingSalesman *komiwojazer;
 void menuKomiwojazera(){
 	int wybor;
@@ -169,9 +186,10 @@ void menuKomiwojazera(){
 	cout << "          MENU KOMIWOJAZERA" << endl;
 	cout << "-------------------------------" << endl;
 	cout << "1. Wczytaj z pliku" << endl;
-	cout << "2. Przeglad zupelny" << endl;
-	cout << "3. Agorytm zachlanny" << endl;
-	cout << "4. 2-opt" << endl;
+	cout << "2. Wyswietl macierz sasiedztwa" << endl;
+	cout << "3. Przeglad zupelny" << endl;
+	cout << "4. Agorytm zachlanny" << endl;
+	cout << "5. 2-opt" << endl;
 	cout << "-------------------------------" << endl;
 	cout << "9. Menu Glowne" << endl;
 	cout << "0. Wyjscie" << endl;
@@ -180,20 +198,28 @@ void menuKomiwojazera(){
 	wybor = _getch();
 	switch (wybor){
 	case '1':
-		system("cls");
-		//wczytanie z pliku
-		//wywolanie konstruktora
+		komiwojazerzPliku();
+		komiwojazer = new TravelingSalesman(wagiKrawedzi);
+		komiwojazer->setMacierz();
 		menuKomiwojazera();
 	case '2':
 		system("cls");
-		menu_dynamic();
+		komiwojazer->getMacierz();
+		system("pause");
+		menuKomiwojazera();
 	case '3':
 		system("cls");
+		menu_glowne();
+	case '4':
+		menuKomiwojazera();
+	case '5':
+		menuKomiwojazera();
+	case '9':
 		menu_glowne();
 	case '0':
 		exit(0);
 	default:
-		menu_glowne();
+		menuKomiwojazera();
 	}
 }
 
@@ -216,7 +242,7 @@ void menu_glowne(){
 	case '2':
 		menu_dynamic();
 	case '3':
-		menu_glowne();
+		menuKomiwojazera();
 	case '0':
 		exit(0);
 	default:
