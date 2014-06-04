@@ -64,7 +64,7 @@ void losowanie_brute(int pojemnosc, int n){
 			konwersja(i, b);
 			temp_w = 0;
 			temp_v = 0;
-			for (j = 0; j <n; j++) //petla sprawdzaj¹ca czy wybrany przedmiot nalezy do optymalnego wyboru * /
+			for (j = 0; j <n; j++) //petla sprawdzaj¹ca czy wybrany przedmiot nalezy do optymalnego wyboru
 			if (b[j] == 1)
 			{
 				temp_w = temp_w + w[j];
@@ -135,12 +135,12 @@ void wczytaj_z_pliku_brute(){
 		//temp.insert(temp.begin() + j, 0);
 
 	}
-	for (i = 0; i <pow((double)2, (int)li_przedmiotow); i++) //exhaustive of all possible selection to identify the optimal choice
+	for (i = 0; i <pow((double)2, (int)li_przedmiotow); i++) //wszystkie mozliwe kombinacje
 	{
 		konwersja(i, b);
 		temp_w = 0;
 		temp_v = 0;
-		for (j = 0; j <li_przedmiotow; j++) //loop to determine whether the current selection to meet the optimal choice * /
+		for (j = 0; j <li_przedmiotow; j++) //petla sprawdzaj¹ca czy wybrany przedmiot nalezy do optymalnego wyboru
 		if (b[j] == 1)
 		{
 			temp_w = temp_w + w[j];
