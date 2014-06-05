@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "TravelingSalesman.h";
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -25,17 +26,23 @@ TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedziKonstruktor){
 }
 
 // *********** METODY ***************************
-void TravelingSalesman::pokazWage() {
+void TravelingSalesman::bruteforce(){
 	int *wierzcholki = new int[liczbaMiast];
+	int koszt;
 
 	for (int i = 0; i < liczbaMiast; i++) {
 		wierzcholki[i] = i;
 	}
-	
-	cout << macierz[wierzcholki[0]][wierzcholki[1]];
+
+	do {
+		
+		for (int i = 0; i < liczbaMiast; i++)
+			cout << wierzcholki[i] << " ";
+		cout << "\n";
+	} 
+	while (next_permutation(wierzcholki, wierzcholki + liczbaMiast));
 }
 
-//************* WYSWIETLENIE MACIERZY (GRAFU) *******
 void TravelingSalesman::wyswietlMacierz(){
 	for (int i = 0; i < liczbaMiast; i++){
 		for (int j = 0; j < liczbaMiast; j++){
@@ -44,6 +51,7 @@ void TravelingSalesman::wyswietlMacierz(){
 		cout << "\n";
 	}
 }
+
 
 
 //************* AKCESORY *****************************

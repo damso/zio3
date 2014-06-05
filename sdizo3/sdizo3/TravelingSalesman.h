@@ -15,7 +15,7 @@ public:
 	TravelingSalesman(vector <int> wagiKrawedziKonstruktor);
 
 	//metody
-	void pokazWage();
+	void bruteforce();
 
 	//metody tworzenia i wyswietlania grafu
 	void wyswietlMacierz();

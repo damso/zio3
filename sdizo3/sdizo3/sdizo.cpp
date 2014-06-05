@@ -209,7 +209,7 @@ void menuKomiwojazera(){
 		menuKomiwojazera();
 	case '3':
 		system("cls");
-		komiwojazer->pokazWage();
+		komiwojazer->bruteforce();
 		system("pause");
 		menu_glowne();
 	case '4':
