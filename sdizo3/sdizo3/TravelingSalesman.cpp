@@ -8,39 +8,41 @@ using namespace std;
 //************** KONSTRUKTOR ********************
 TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedziKonstruktor){
 	liczbaMiast = wagiKrawedziKonstruktor.front(); //pierwszy element wczytany z pliku do wektora to liczba miast
-	//wagiKrawedzi = wagiKrawedziKonstruktor;
 	
 	//pozostale wartosci, to wagi krawedzi
-	auto it = wagiKrawedziKonstruktor.begin() + 1;
-
 	for (int i = 0; i < liczbaMiast; i++){
 		macierz[i] = new int[liczbaMiast];
 	}
 
+	auto it = wagiKrawedziKonstruktor.begin() + 1;
 	for (int i = 0; i < liczbaMiast; i++){
 		for (int j = 0; j < liczbaMiast; j++){
 			macierz[i][j] = *it;
 			it++;
 		}
 	}
-}
-
-// *********** METODY ***************************
-void TravelingSalesman::bruteforce(){
-	int *wierzcholki = new int[liczbaMiast];
-	int koszt;
 
 	for (int i = 0; i < liczbaMiast; i++) {
 		wierzcholki[i] = i;
 	}
+}
+
+//*************** METODY *************************
+int TravelingSalesman::bruteforce(){
+	int najmniejszyKoszt = 9001;
 
 	do {
-		
-		for (int i = 0; i < liczbaMiast; i++)
-			cout << wierzcholki[i] << " ";
-		cout << "\n";
+		int koszt = 0;
+		for (int i = 0; i < liczbaMiast - 1; i++) {
+			koszt += macierz[wierzcholki[i]][wierzcholki[i + 1]];
+		}
+		koszt += macierz[wierzcholki[liczbaMiast - 1]][wierzcholki[0]];
+		if (koszt < najmniejszyKoszt)
+			najmniejszyKoszt = koszt;
 	} 
 	while (next_permutation(wierzcholki, wierzcholki + liczbaMiast));
+
+	return najmniejszyKoszt;
 }
 
 void TravelingSalesman::wyswietlMacierz(){
@@ -52,17 +54,10 @@ void TravelingSalesman::wyswietlMacierz(){
 	}
 }
 
+TravelingSalesman::~TravelingSalesman(){
+	for (int i = 0; i < liczbaMiast; i++)
+		delete [] macierz[i];
+	delete [] macierz;
 
-
-//************* AKCESORY *****************************
-/*vector <int> TravelingSalesman::getWagiKrawedzi(){
-	return wagiKrawedzi;
+	delete [] wierzcholki;
 }
-
-void TravelingSalesman::setLiczbaMiast(vector <int> _wagiKrawedzi){
-	liczbaMiast = _wagiKrawedzi.front();
-}
-
-int TravelingSalesman::getLiczbaMiast(){
-	return liczbaMiast;
-}*/

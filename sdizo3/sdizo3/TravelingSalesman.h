@@ -8,24 +8,17 @@ using namespace std;
 class TravelingSalesman {
 	int liczbaMiast;
 	int **macierz = new int * [liczbaMiast];
-	//vector <int> wagiKrawedzi;
+	int *wierzcholki = new int[liczbaMiast];
 
 public:
 	//konstruktor
 	TravelingSalesman(vector <int> wagiKrawedziKonstruktor);
 
 	//metody
-	void bruteforce();
-
-	//metody tworzenia i wyswietlania grafu
+	int bruteforce();
 	void wyswietlMacierz();
-	//int getMacierz();
 
-	//pozosta³e gettery i settery
-	//vector <int> getWagiKrawedzi();
-	//void setLiczbaMiast(vector <int> _wagiKrawedzi);
-	//int getLiczbaMiast();
-
+	//destruktor
 	~TravelingSalesman();
 };
 #endif

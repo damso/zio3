@@ -209,7 +209,7 @@ void menuKomiwojazera(){
 		menuKomiwojazera();
 	case '3':
 		system("cls");
-		komiwojazer->bruteforce();
+		cout << "Najmniejszy koszt: " << komiwojazer->bruteforce() << "\n";
 		system("pause");
 		menu_glowne();
 	case '4':
@@ -219,6 +219,7 @@ void menuKomiwojazera(){
 	case '9':
 		menu_glowne();
 	case '0':
+		komiwojazer->~TravelingSalesman();
 		exit(0);
 	default:
 		menuKomiwojazera();
