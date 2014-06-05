@@ -9,6 +9,7 @@
 #include <time.h>
 #include <fstream>
 #include <conio.h>
+#include <list>
 #include "TravelingSalesman.h"
 using namespace std;
 
@@ -200,15 +201,16 @@ void menuKomiwojazera(){
 	case '1':
 		komiwojazerzPliku();
 		komiwojazer = new TravelingSalesman(wagiKrawedzi);
-		komiwojazer->setMacierz();
 		menuKomiwojazera();
 	case '2':
 		system("cls");
-		komiwojazer->getMacierz();
+		komiwojazer->wyswietlMacierz();
 		system("pause");
 		menuKomiwojazera();
 	case '3':
 		system("cls");
+		komiwojazer->pokazWage();
+		system("pause");
 		menu_glowne();
 	case '4':
 		menuKomiwojazera();

@@ -6,50 +6,48 @@ using namespace std;
 
 //************** KONSTRUKTOR ********************
 TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedziKonstruktor){
-	setLiczbaMiast(wagiKrawedziKonstruktor);
-	wagiKrawedzi = wagiKrawedziKonstruktor;
-}
-
-// *********** METODY ***************************
-
-
-//************* STWORZENIE MACIERZY (GRAFU) *****
-void TravelingSalesman::setMacierz(){
-	int liczbaMiast = getLiczbaMiast();
-	vector <int> wagiKrawedzi = getWagiKrawedzi();
-	vector<int>::iterator it;
-	it = wagiKrawedzi.begin()+1;
-	int **macierzMetody = new int *[liczbaMiast];
+	liczbaMiast = wagiKrawedziKonstruktor.front(); //pierwszy element wczytany z pliku do wektora to liczba miast
+	//wagiKrawedzi = wagiKrawedziKonstruktor;
+	
+	//pozostale wartosci, to wagi krawedzi
+	auto it = wagiKrawedziKonstruktor.begin() + 1;
 
 	for (int i = 0; i < liczbaMiast; i++){
-		macierzMetody[i] = new int[liczbaMiast];
+		macierz[i] = new int[liczbaMiast];
 	}
 
 	for (int i = 0; i < liczbaMiast; i++){
 		for (int j = 0; j < liczbaMiast; j++){
-			macierzMetody[i][j] = *it;
+			macierz[i][j] = *it;
 			it++;
 		}
 	}
+}
 
-	macierz = macierzMetody;
+// *********** METODY ***************************
+void TravelingSalesman::pokazWage() {
+	int *wierzcholki = new int[liczbaMiast];
+
+	for (int i = 0; i < liczbaMiast; i++) {
+		wierzcholki[i] = i;
+	}
+	
+	cout << macierz[wierzcholki[0]][wierzcholki[1]];
 }
 
 //************* WYSWIETLENIE MACIERZY (GRAFU) *******
-int TravelingSalesman::getMacierz(){
-	/*int liczbaMiast = getLiczbaMiast();
+void TravelingSalesman::wyswietlMacierz(){
 	for (int i = 0; i < liczbaMiast; i++){
 		for (int j = 0; j < liczbaMiast; j++){
 			cout << macierz[i][j]<<" ";
 		}
 		cout << "\n";
-	}*/
-	return **macierz;
+	}
 }
 
 
 //************* AKCESORY *****************************
-vector <int> TravelingSalesman::getWagiKrawedzi(){
+/*vector <int> TravelingSalesman::getWagiKrawedzi(){
 	return wagiKrawedzi;
 }
 
@@ -59,4 +57,4 @@ void TravelingSalesman::setLiczbaMiast(vector <int> _wagiKrawedzi){
 
 int TravelingSalesman::getLiczbaMiast(){
 	return liczbaMiast;
-}
+}*/
