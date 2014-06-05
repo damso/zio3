@@ -6,24 +6,26 @@
 using namespace std;
 
 //************** KONSTRUKTOR ********************
-TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedziKonstruktor){
-	liczbaMiast = wagiKrawedziKonstruktor.front(); //pierwszy element wczytany z pliku do wektora to liczba miast
+TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedzi){
+	liczbaMiast = wagiKrawedzi.front(); //pierwszy element wczytany z pliku do wektora to liczba miast
 	
-	//pozostale wartosci, to wagi krawedzi
+	//tworze macierz sasiedztwa
 	for (int i = 0; i < liczbaMiast; i++){
-		macierz[i] = new int[liczbaMiast];
+		macierzSasiedztwa[i] = new int[liczbaMiast];
 	}
 
-	auto it = wagiKrawedziKonstruktor.begin() + 1;
+	//wypelniam macierz sasiedztwa kolejnymi wagami z wektora
+	auto it = wagiKrawedzi.begin() + 1;
 	for (int i = 0; i < liczbaMiast; i++){
 		for (int j = 0; j < liczbaMiast; j++){
-			macierz[i][j] = *it;
+			macierzSasiedztwa[i][j] = *it;
 			it++;
 		}
 	}
 
+	//tworze tablice miast (wierzcholkow), ktore posluza do permutacji
 	for (int i = 0; i < liczbaMiast; i++) {
-		wierzcholki[i] = i;
+		miasta[i] = i;
 	}
 }
 
@@ -34,13 +36,13 @@ int TravelingSalesman::bruteforce(){
 	do {
 		int koszt = 0;
 		for (int i = 0; i < liczbaMiast - 1; i++) {
-			koszt += macierz[wierzcholki[i]][wierzcholki[i + 1]];
+			koszt += macierzSasiedztwa[miasta[i]][miasta[i + 1]];
 		}
-		koszt += macierz[wierzcholki[liczbaMiast - 1]][wierzcholki[0]];
+		koszt += macierzSasiedztwa[miasta[liczbaMiast - 1]][miasta[0]];
 		if (koszt < najmniejszyKoszt)
 			najmniejszyKoszt = koszt;
 	} 
-	while (next_permutation(wierzcholki, wierzcholki + liczbaMiast));
+	while (next_permutation(miasta, miasta + liczbaMiast));
 
 	return najmniejszyKoszt;
 }
@@ -48,7 +50,7 @@ int TravelingSalesman::bruteforce(){
 void TravelingSalesman::wyswietlMacierz(){
 	for (int i = 0; i < liczbaMiast; i++){
 		for (int j = 0; j < liczbaMiast; j++){
-			cout << macierz[i][j]<<" ";
+			cout << macierzSasiedztwa[i][j] << " ";
 		}
 		cout << "\n";
 	}
@@ -56,8 +58,8 @@ void TravelingSalesman::wyswietlMacierz(){
 
 TravelingSalesman::~TravelingSalesman(){
 	for (int i = 0; i < liczbaMiast; i++)
-		delete [] macierz[i];
-	delete [] macierz;
+		delete[] macierzSasiedztwa[i];
+	delete[] macierzSasiedztwa;
 
-	delete [] wierzcholki;
+	delete[] miasta;
 }
