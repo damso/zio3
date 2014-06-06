@@ -219,7 +219,7 @@ void menuKomiwojazera(){
 	case '9':
 		menu_glowne();
 	case '0':
-		//komiwojazer->~TravelingSalesman();
+		komiwojazer->~TravelingSalesman();
 		exit(0);
 	default:
 		menuKomiwojazera();

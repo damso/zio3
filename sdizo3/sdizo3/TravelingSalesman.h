@@ -6,8 +6,8 @@ using namespace std;
 
 class TravelingSalesman {
 	int liczbaMiast;
-	int **macierzSasiedztwa = new int*[liczbaMiast];
-	int *miasta = new int[liczbaMiast];
+	int **macierzSasiedztwa;
+	int *miasta;
 
 public:
 	//konstruktor

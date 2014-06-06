@@ -9,6 +9,7 @@ using namespace std;
 TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedzi){
 	liczbaMiast = wagiKrawedzi.front(); //pierwszy element wczytany z pliku do wektora to liczba miast
 	
+	macierzSasiedztwa = new int*[liczbaMiast];
 	//tworze macierz sasiedztwa
 	for (int i = 0; i < liczbaMiast; i++){
 		macierzSasiedztwa[i] = new int[liczbaMiast];
@@ -24,12 +25,10 @@ TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedzi){
 	}
 
 	//tworze tablice miast (wierzcholkow), ktore posluza do permutacji
+	miasta = new int[liczbaMiast];
 	for (int i = 0; i < liczbaMiast; i++) {
 		miasta[i] = i;
 	}
-
-	//ustawiamy odwiedzone miasta na false
-	
 }
 
 //*************** METODY *************************
@@ -83,6 +82,8 @@ int TravelingSalesman::greedy() {
 
 	najmniejszyKoszt += macierzSasiedztwa[nastepneMiasto][0];
 	return najmniejszyKoszt;
+
+	delete[] odwiedzone;
 }
 
 void TravelingSalesman::wyswietlMacierz(){
