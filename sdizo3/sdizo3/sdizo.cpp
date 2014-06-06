@@ -211,7 +211,7 @@ void menuKomiwojazera(){
 		system("cls");
 		cout << "Najmniejszy koszt: " << komiwojazer->bruteforce() << "\n";
 		system("pause");
-		menu_glowne();
+		menuKomiwojazera();
 	case '4':
 		menuKomiwojazera();
 	case '5':

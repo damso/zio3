@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "TravelingSalesman.h";
 #include <iostream>
-#include <algorithm>
+#include <algorithm> //next_permutation
 
 using namespace std;
 
