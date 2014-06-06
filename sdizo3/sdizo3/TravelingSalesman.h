@@ -15,6 +15,7 @@ public:
 
 	//metody
 	int bruteforce();
+	int greedy();
 	void wyswietlMacierz();
 
 	//destruktor

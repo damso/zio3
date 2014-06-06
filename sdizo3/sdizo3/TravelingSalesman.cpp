@@ -27,6 +27,9 @@ TravelingSalesman::TravelingSalesman(vector <int> wagiKrawedzi){
 	for (int i = 0; i < liczbaMiast; i++) {
 		miasta[i] = i;
 	}
+
+	//ustawiamy odwiedzone miasta na false
+	
 }
 
 //*************** METODY *************************
@@ -38,12 +41,47 @@ int TravelingSalesman::bruteforce(){
 		for (int i = 0; i < liczbaMiast - 1; i++) {
 			koszt += macierzSasiedztwa[miasta[i]][miasta[i + 1]];
 		}
+	
 		koszt += macierzSasiedztwa[miasta[liczbaMiast - 1]][miasta[0]];
 		if (koszt < najmniejszyKoszt)
 			najmniejszyKoszt = koszt;
 	} 
 	while (next_permutation(miasta, miasta + liczbaMiast));
 
+	return najmniejszyKoszt;
+}
+
+int TravelingSalesman::greedy() {
+	int koszt = 9001;
+	int najmniejszyKoszt = 0;
+	int numerMiasta;
+	int nastepneMiasto;
+	int index = 0;
+
+	bool *odwiedzone = new bool[liczbaMiast];
+	for (int i = 0; i < liczbaMiast; i++){
+		odwiedzone[i] = false;
+	}
+
+	for (int i = 0; i < liczbaMiast - 1; i++) {
+		numerMiasta = index;
+		odwiedzone[numerMiasta] = true;
+		for (int j = 0; j < liczbaMiast; j++) {
+			if (macierzSasiedztwa[numerMiasta][j] < koszt) {
+				nastepneMiasto = j;
+				if (odwiedzone[nastepneMiasto] == true)
+					continue;
+				else {
+					koszt = macierzSasiedztwa[numerMiasta][j];
+					index = nastepneMiasto;
+				}
+			}
+		}
+		najmniejszyKoszt += koszt;
+		koszt = 9001;
+	}
+
+	najmniejszyKoszt += macierzSasiedztwa[index][0];
 	return najmniejszyKoszt;
 }
 

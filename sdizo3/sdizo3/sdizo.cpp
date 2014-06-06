@@ -190,7 +190,6 @@ void menuKomiwojazera(){
 	cout << "2. Wyswietl macierz sasiedztwa" << endl;
 	cout << "3. Przeglad zupelny" << endl;
 	cout << "4. Agorytm zachlanny" << endl;
-	cout << "5. 2-opt" << endl;
 	cout << "-------------------------------" << endl;
 	cout << "9. Menu Glowne" << endl;
 	cout << "0. Wyjscie" << endl;
@@ -213,13 +212,14 @@ void menuKomiwojazera(){
 		system("pause");
 		menuKomiwojazera();
 	case '4':
-		menuKomiwojazera();
-	case '5':
+		system("cls");
+		cout << "Najmniejszy koszt: " << komiwojazer->greedy() << "\n";
+		system("pause");
 		menuKomiwojazera();
 	case '9':
 		menu_glowne();
 	case '0':
-		komiwojazer->~TravelingSalesman();
+		//komiwojazer->~TravelingSalesman();
 		exit(0);
 	default:
 		menuKomiwojazera();
