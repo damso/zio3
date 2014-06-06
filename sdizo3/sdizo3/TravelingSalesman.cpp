@@ -55,8 +55,8 @@ int TravelingSalesman::greedy() {
 	int koszt = 9001;
 	int najmniejszyKoszt = 0;
 	int numerMiasta;
-	int nastepneMiasto;
-	int index = 0;
+	int odwiedzaneMiasto;
+	int nastepneMiasto = 0;
 
 	bool *odwiedzone = new bool[liczbaMiast];
 	for (int i = 0; i < liczbaMiast; i++){
@@ -64,16 +64,16 @@ int TravelingSalesman::greedy() {
 	}
 
 	for (int i = 0; i < liczbaMiast - 1; i++) {
-		numerMiasta = index;
+		numerMiasta = nastepneMiasto;
 		odwiedzone[numerMiasta] = true;
 		for (int j = 0; j < liczbaMiast; j++) {
 			if (macierzSasiedztwa[numerMiasta][j] < koszt) {
-				nastepneMiasto = j;
-				if (odwiedzone[nastepneMiasto] == true)
+				odwiedzaneMiasto = j;
+				if (odwiedzone[odwiedzaneMiasto] == true)
 					continue;
 				else {
 					koszt = macierzSasiedztwa[numerMiasta][j];
-					index = nastepneMiasto;
+					nastepneMiasto = odwiedzaneMiasto;
 				}
 			}
 		}
@@ -81,7 +81,7 @@ int TravelingSalesman::greedy() {
 		koszt = 9001;
 	}
 
-	najmniejszyKoszt += macierzSasiedztwa[index][0];
+	najmniejszyKoszt += macierzSasiedztwa[nastepneMiasto][0];
 	return najmniejszyKoszt;
 }
 
