@@ -56,6 +56,8 @@ void zapiszWynikiBudowania(double wyniki[]){
 }
 
 
+
+
 void wczytaj_z_pliku_plecak(){
 	vector<int> wektor;
 	int x;
@@ -163,6 +165,7 @@ void menu_dynamic(){
 	}
 }
 
+// ************** KOMIWOJA¯ER ******************
 vector <int> wagiKrawedzi;
 void komiwojazerzPliku(){
 	vector<int> wektor;
@@ -180,6 +183,25 @@ void komiwojazerzPliku(){
 	wagiKrawedzi = wektor;
 }
 
+/* NA POTRZEBY OBLICZEN */
+vector<int> wynikiObliczen;
+
+void obliczeniaDoPliku(vector<int> wynikiObliczen){
+	auto it = wynikiObliczen.begin();
+
+	fstream plik;
+	plik.open("wynikiTSP.txt", ios::out);
+	if (plik.good() == true){
+		for (int i = 0; i < wynikiObliczen.size(); i++){
+			plik << *it << endl;
+			it++;
+		}
+	}
+
+	plik.close();
+}
+
+
 TravelingSalesman *komiwojazer;
 void menuKomiwojazera(){
 	int wybor;
@@ -189,7 +211,7 @@ void menuKomiwojazera(){
 	cout << "1. Wczytaj z pliku" << endl;
 	cout << "2. Wyswietl macierz sasiedztwa" << endl;
 	cout << "3. Przeglad zupelny" << endl;
-	cout << "4. Agorytm zachlanny" << endl;
+	cout << "4. Algorytm zachlanny" << endl;
 	cout << "-------------------------------" << endl;
 	cout << "9. Menu Glowne" << endl;
 	cout << "0. Wyjscie" << endl;
@@ -200,6 +222,7 @@ void menuKomiwojazera(){
 	case '1':
 		komiwojazerzPliku();
 		komiwojazer = new TravelingSalesman(wagiKrawedzi);
+		system("pause");
 		menuKomiwojazera();
 	case '2':
 		system("cls");
